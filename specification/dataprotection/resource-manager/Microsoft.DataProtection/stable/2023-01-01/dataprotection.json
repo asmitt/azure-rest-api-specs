@@ -4917,6 +4917,21 @@
       "title": "BasePolicyRule",
       "type": "object"
     },
+    "BaseResourceProperties": {
+      "description": "Properties which are specific to datasource/datasourcesets",
+      "required": [
+        "objectType"
+      ],
+      "type": "object",
+      "properties": {
+        "objectType": {
+          "description": "Type of the specific object - used for deserializing",
+          "type": "string",
+          "readOnly": false
+        }
+      },
+      "discriminator": "objectType"
+    },
     "CheckNameAvailabilityRequest": {
       "description": "CheckNameAvailability Request",
       "properties": {
@@ -5173,6 +5188,10 @@
         "resourceUri": {
           "description": "Uri of the resource.",
           "type": "string"
+        },
+        "resourceProperties": {
+          "$ref": "#/definitions/BaseResourceProperties",
+          "description": "Properties specific to data source"
         }
       },
       "required": [
@@ -5211,6 +5230,10 @@
         "resourceUri": {
           "description": "Uri of the resource.",
           "type": "string"
+        },
+        "resourceProperties": {
+          "$ref": "#/definitions/BaseResourceProperties",
+          "description": "Properties specific to data source set"
         }
       },
       "required": [
